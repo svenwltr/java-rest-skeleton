@@ -8,7 +8,7 @@
 	<packaging>jar</packaging>
 
 	<properties>
-		<spring.version>3.0.5.RELEASE</spring.version>
+		<spring.version>3.2.2.RELEASE</spring.version>
 	</properties>
 
 	<build>
@@ -33,7 +33,7 @@
 		</plugins>
 	</build>
 
-	<dependencies>
+	<dependencies>		
 		<!-- Jetty webserver -->
 		<dependency>
 			<groupId>org.mortbay.jetty</groupId>
@@ -66,6 +66,27 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
+		</dependency>
+
+		<!-- mongodb java driver -->
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+
+		<!-- Spring data mongodb -->
+		<dependency>
+			<groupId>org.springframework.data</groupId>
+			<artifactId>spring-data-mongodb</artifactId>
+			<version>1.2.1.RELEASE</version>
+		</dependency>
+		
+		<!-- Logging utility -->
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>slf4j-impl</artifactId>
+			<version>2.0-alpha2</version>
 		</dependency>
 	</dependencies>
 </project>
