@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
 
-	<context:component-scan base-package="eu.wltr.restskeleton.resources" />
+	<context:component-scan base-package="eu.wltr.restskeleton.rest.resources" />
 
 	<mvc:annotation-driven>
 		<mvc:message-converters>
@@ -24,6 +24,6 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 
-	<bean id="jacksonObjectMapper" class="eu.wltr.restskeleton.mapper.RestObjectMapper" />
+	<bean id="jacksonObjectMapper" class="eu.wltr.restskeleton.rest.mapper.RestObjectMapper" />
 
 </beans>

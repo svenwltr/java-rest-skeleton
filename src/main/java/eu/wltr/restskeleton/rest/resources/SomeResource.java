@@ -1,4 +1,4 @@
-package eu.wltr.restskeleton.resources;
+package eu.wltr.restskeleton.rest.resources;
 
 import java.util.Date;
 import java.util.List;
@@ -13,17 +13,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import eu.wltr.restskeleton.mapper.FooField;
 import eu.wltr.restskeleton.models.SomeModel;
+import eu.wltr.restskeleton.rest.mapper.FooField;
+import eu.wltr.restskeleton.rest.statuscodes.StatusNotFound;
 import eu.wltr.restskeleton.server.App;
 
 @Controller
 @RequestMapping("/skeleton/test")
 public class SomeResource {
-	
-	@ResponseStatus(value = HttpStatus.NOT_FOUND)
-	public class ResourceNotFoundException extends RuntimeException {
-	}
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public @ResponseBody List<SomeModel> listModels()
@@ -40,7 +37,7 @@ public class SomeResource {
 		SomeModel result = App.getMongoOperations().findOne(q, SomeModel.class);
 		
 		if(result == null)
-			throw new ResourceNotFoundException();
+			throw new StatusNotFound();
 		
 		return result;
 	}

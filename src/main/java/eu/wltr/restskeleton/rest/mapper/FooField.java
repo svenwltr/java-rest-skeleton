@@ -1,4 +1,4 @@
-package eu.wltr.restskeleton.mapper;
+package eu.wltr.restskeleton.rest.mapper;
 
 public class FooField {
 	

@@ -1,4 +1,4 @@
-package eu.wltr.restskeleton.mapper;
+package eu.wltr.restskeleton.rest.mapper;
 
 import org.bson.types.ObjectId;
 import org.codehaus.jackson.map.ObjectMapper;
