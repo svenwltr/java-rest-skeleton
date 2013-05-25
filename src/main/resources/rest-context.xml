@@ -24,6 +24,6 @@
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 
-	<bean id="jacksonObjectMapper" class="eu.wltr.restskeleton.mapper.CustomObjectMapper" />
+	<bean id="jacksonObjectMapper" class="eu.wltr.restskeleton.mapper.RestObjectMapper" />
 
 </beans>
