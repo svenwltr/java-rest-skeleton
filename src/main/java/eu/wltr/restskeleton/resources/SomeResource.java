@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import eu.wltr.restskeleton.mapper.FooField;
 import eu.wltr.restskeleton.models.SomeModel;
 import eu.wltr.restskeleton.server.App;
 
@@ -22,6 +23,10 @@ public class SomeResource {
 		m.name = name;
 		m.count = name.length();
 		m.date = new Date();
+		m.foo = new FooField();
+		m.foo.a = "a";
+		m.foo.b = 2;
+		m.foo.c = "c";
 		
 		App.getMongoOperations().save(m);
 		
