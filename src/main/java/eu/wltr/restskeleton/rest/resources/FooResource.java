@@ -13,28 +13,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import eu.wltr.restskeleton.models.SomeModel;
+import eu.wltr.restskeleton.models.BarRecord;
 import eu.wltr.restskeleton.rest.mapper.FooField;
 import eu.wltr.restskeleton.rest.statuscodes.StatusNotFound;
 import eu.wltr.restskeleton.server.App;
 
 @Controller
-@RequestMapping("/skeleton/test")
-public class SomeResource {
+@RequestMapping("/skeleton/foo")
+public class FooResource {
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public @ResponseBody List<SomeModel> listModels()
+	public @ResponseBody List<BarRecord> listModels()
 	{
-		List<SomeModel> foo = App.getMongoOperations().findAll(SomeModel.class);
+		List<BarRecord> foo = App.getMongoOperations().findAll(BarRecord.class);
 		
 		return foo;
 	}
 	
 	@RequestMapping(value="{name}", method = RequestMethod.GET)
-	public @ResponseBody SomeModel getModel(@PathVariable String name)
+	public @ResponseBody BarRecord getModel(@PathVariable String name)
 	{
 		Query q = new Query(Criteria.where("name").is(name));
-		SomeModel result = App.getMongoOperations().findOne(q, SomeModel.class);
+		BarRecord result = App.getMongoOperations().findOne(q, BarRecord.class);
 		
 		if(result == null)
 			throw new StatusNotFound();
@@ -43,9 +43,9 @@ public class SomeResource {
 	}
 
 	@RequestMapping(value="{name}", method = RequestMethod.POST)
-	public @ResponseBody SomeModel postModel(@PathVariable String name)
+	public @ResponseBody BarRecord postModel(@PathVariable String name)
 	{
-		SomeModel m = new SomeModel();
+		BarRecord m = new BarRecord();
 		
 		m.name = name;
 		m.count = name.length();

@@ -8,8 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import eu.wltr.restskeleton.rest.mapper.FooField;
  
-@Document(collection = "users")
-public class SomeModel {
+@Document(collection = "bar")
+public class BarRecord {
 	
 	@Id
 	public ObjectId id;
