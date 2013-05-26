@@ -2,7 +2,7 @@ package eu.wltr.restskeleton.models;
 
 import eu.wltr.restskeleton.utils.SerialClone;
 
-public abstract class ModelBase<T> {
+public class ModelBase<T> {
 
 	public final T record;
 
