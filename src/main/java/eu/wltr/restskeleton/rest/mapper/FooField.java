@@ -1,11 +1,10 @@
 package eu.wltr.restskeleton.rest.mapper;
 
 
-import java.io.Serializable;
 
 
 
-public class FooField implements Serializable
+public class FooField
 {
 
 	public String a;

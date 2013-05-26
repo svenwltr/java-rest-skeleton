@@ -1,7 +1,7 @@
 package eu.wltr.restskeleton.models;
 
 
-import eu.wltr.restskeleton.utils.SerialClone;
+import eu.wltr.restskeleton.utils.JavaBeanCopier;
 
 
 
@@ -17,6 +17,7 @@ public class ModelBase<T>
 
 	public T cloneRecord()
 	{
-		return SerialClone.clone(record);
+		return JavaBeanCopier.copy(record);
+		// return SerialClone.clone(record);
 	}
 }

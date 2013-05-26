@@ -1,7 +1,6 @@
 package eu.wltr.restskeleton.models;
 
 
-import java.io.Serializable;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
@@ -12,7 +11,7 @@ import eu.wltr.restskeleton.rest.mapper.FooField;
 
 
 @Document(collection = "bar")
-public class BarRecord implements Serializable
+public class BarRecord
 {
 
 	@Id
