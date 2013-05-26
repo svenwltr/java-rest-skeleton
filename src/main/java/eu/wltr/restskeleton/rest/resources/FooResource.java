@@ -19,15 +19,15 @@ import eu.wltr.restskeleton.server.App;
 public class FooResource {
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public @ResponseBody List<BarRecord> listModels()
+	public @ResponseBody List<BarModel> listModels()
 	{
-		return BarModel.findAll().records;
+		return BarModel.findAll();
 	}
 	
 	@RequestMapping(value="{name}", method = RequestMethod.GET)
-	public @ResponseBody BarRecord getModel(@PathVariable String name)
+	public @ResponseBody BarModel getModel(@PathVariable String name)
 	{
-		return BarModel.findByName(name).record;
+		return BarModel.findByName(name);
 	}
 
 	@RequestMapping(value="{name}", method = RequestMethod.POST)
