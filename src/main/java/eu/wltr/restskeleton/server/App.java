@@ -1,5 +1,6 @@
 package eu.wltr.restskeleton.server;
 
+
 import org.mortbay.jetty.Server;
 import org.mortbay.jetty.handler.ContextHandler;
 import org.mortbay.jetty.servlet.ServletHandler;
@@ -8,17 +9,22 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.web.servlet.DispatcherServlet;
 
-public class App {
+
+
+public class App
+{
 
 	private static MongoOperations mongoOperations;
 
-	public static void main(String[] args) throws Exception {
+
+	public static void main(String[] args) throws Exception
+	{
 		mongoOperations = createMongoOperations();
 		createServer().start();
-		
+
 		Thread.currentThread().join();
 	}
-	
+
 	private static MongoOperations createMongoOperations()
 	{
 		final GenericXmlApplicationContext ctx = new GenericXmlApplicationContext(
@@ -26,21 +32,22 @@ public class App {
 
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			@Override
-			public void run() {
+			public void run()
+			{
 				System.out.println("close");
 				ctx.close();
 			}
 		});
-		
+
 		return (MongoOperations) ctx.getBean("mongoTemplate");
 	}
-	
+
 	private static Server createServer()
 	{
 		final Server server = new Server(8080);
 
-		final ContextHandler context = new ContextHandler();
-		context.setContextPath("/");
+		final ContextHandler context = new ContextHandler("/");
+		context.setResourceBase("src/main/webapp/");
 		server.setHandler(context);
 
 		final DispatcherServlet dispatcherServlet = new DispatcherServlet();
@@ -52,10 +59,11 @@ public class App {
 				"/*");
 
 		context.addHandler(handler);
-		
+
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			@Override
-			public void run() {
+			public void run()
+			{
 				try {
 					server.stop();
 				} catch (Exception e) {
@@ -63,11 +71,12 @@ public class App {
 				}
 			}
 		});
-		
+
 		return server;
 	}
 
-	public static MongoOperations getMongoOperations() {
+	public static MongoOperations getMongoOperations()
+	{
 		return mongoOperations;
 	}
 }

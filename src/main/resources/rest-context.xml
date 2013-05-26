@@ -11,6 +11,8 @@
 
 
 	<context:component-scan base-package="eu.wltr.restskeleton.rest.resources" />
+	
+	<mvc:resources mapping="/static/**" location="/static/" />
 
 	<mvc:annotation-driven>
 		<mvc:message-converters>
