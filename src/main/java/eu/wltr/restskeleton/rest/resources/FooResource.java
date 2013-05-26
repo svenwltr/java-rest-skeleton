@@ -1,5 +1,6 @@
 package eu.wltr.restskeleton.rest.resources;
 
+
 import java.util.Date;
 import java.util.List;
 
@@ -14,27 +15,33 @@ import eu.wltr.restskeleton.models.BarRecord;
 import eu.wltr.restskeleton.rest.mapper.FooField;
 import eu.wltr.restskeleton.server.App;
 
+
+
 @Controller
 @RequestMapping("/skeleton/foo")
-public class FooResource {
-	
-	@RequestMapping(method=RequestMethod.GET)
-	public @ResponseBody List<BarModel> listModels()
+public class FooResource
+{
+
+	@RequestMapping(method = RequestMethod.GET)
+	public @ResponseBody
+	List<BarModel> listModels()
 	{
 		return BarModel.findAll();
 	}
-	
-	@RequestMapping(value="{name}", method = RequestMethod.GET)
-	public @ResponseBody BarModel getModel(@PathVariable String name)
+
+	@RequestMapping(value = "{name}", method = RequestMethod.GET)
+	public @ResponseBody
+	BarModel getModel(@PathVariable String name)
 	{
 		return BarModel.findByName(name);
 	}
 
-	@RequestMapping(value="{name}", method = RequestMethod.POST)
-	public @ResponseBody BarRecord postModel(@PathVariable String name)
+	@RequestMapping(value = "{name}", method = RequestMethod.POST)
+	public @ResponseBody
+	BarRecord postModel(@PathVariable String name)
 	{
 		BarRecord m = new BarRecord();
-		
+
 		m.name = name;
 		m.count = name.length();
 		m.date = new Date();
@@ -42,9 +49,9 @@ public class FooResource {
 		m.foo.a = "a";
 		m.foo.b = 2;
 		m.foo.c = "c";
-		
+
 		App.getMongoOperations().save(m);
-		
+
 		return m;
 	}
 }
