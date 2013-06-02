@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import eu.wltr.restskeleton.models.BarModel;
 import eu.wltr.restskeleton.models.BarRecord;
 import eu.wltr.restskeleton.rest.mapper.FooField;
-import eu.wltr.restskeleton.server.App;
 
 
 
@@ -50,7 +49,7 @@ public class FooResource
 		m.foo.b = 2;
 		m.foo.c = "c";
 
-		App.getMongoOperations().save(m);
+		// App.getMongoOperations().save(m);
 
 		return m;
 	}

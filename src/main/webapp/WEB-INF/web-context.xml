@@ -11,8 +11,16 @@
 
 
 	<context:component-scan base-package="eu.wltr.restskeleton.rest.resources" />
-	
+
 	<mvc:resources mapping="/static/**" location="/static/" />
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
 
 	<mvc:annotation-driven>
 		<mvc:message-converters>
