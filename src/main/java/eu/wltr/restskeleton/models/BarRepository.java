@@ -14,16 +14,16 @@ public class BarRepository {
 	@Autowired
 	public MongoOperations mongoOperations;
 
-	public List<BarRecord> findAll() {
-		return mongoOperations.findAll(BarRecord.class);
+	public List<BarDocument> findAll() {
+		return mongoOperations.findAll(BarDocument.class);
 	}
 
-	public BarRecord findByName(String name) {
+	public BarDocument findByName(String name) {
 		Query q = new Query(Criteria.where("name").is(name));
-		return mongoOperations.findOne(q, BarRecord.class);
+		return mongoOperations.findOne(q, BarDocument.class);
 	}
 
-	public void save(BarRecord m) {
+	public void save(BarDocument m) {
 		mongoOperations.save(m);
 	}
 }

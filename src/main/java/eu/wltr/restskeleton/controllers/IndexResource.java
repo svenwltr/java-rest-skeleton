@@ -1,4 +1,4 @@
-package eu.wltr.restskeleton.rest.resources;
+package eu.wltr.restskeleton.controllers;
 
 
 import org.springframework.stereotype.Controller;

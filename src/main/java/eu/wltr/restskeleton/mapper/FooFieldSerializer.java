@@ -1,4 +1,4 @@
-package eu.wltr.restskeleton.rest.mapper;
+package eu.wltr.restskeleton.mapper;
 
 
 import java.io.IOException;
