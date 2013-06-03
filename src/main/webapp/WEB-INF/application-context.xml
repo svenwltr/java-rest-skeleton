@@ -8,13 +8,17 @@
           http://www.springframework.org/schema/beans
           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
+	<!-- This application context contains all extra beans. -->
+
+	<!-- Configuration for MongoDB. -->
 	<mongo:mongo host="127.0.0.1" port="27017" />
 	<mongo:db-factory dbname="skeleton" />
-	
-	<context:component-scan base-package="eu.wltr.restskeleton.models" />
 
+	<!-- This bean is for direct communication with MongoDB. This will be used by Repositories. -->
 	<bean id="mongoOperations" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
 	</bean>
 
+	<!-- Scans for Documents and Repositories, so they are avalible with @Autowire. -->
+	<context:component-scan base-package="eu.wltr.restskeleton.models" />
 </beans>

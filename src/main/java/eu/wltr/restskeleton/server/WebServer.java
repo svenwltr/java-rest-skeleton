@@ -1,6 +1,5 @@
 package eu.wltr.restskeleton.server;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,17 +12,21 @@ import org.eclipse.jetty.util.thread.QueuedThreadPool;
 import org.eclipse.jetty.util.thread.ThreadPool;
 import org.eclipse.jetty.webapp.WebAppContext;
 
-/*
- * https://github.com/steveliles/jetty-embedded-spring-mvc
+/**
+ * Class for starting and stopping the HTTP server.
+ * 
+ * <p>
+ * You may be able to dump this class and use the web.xml in a WAR container.
+ * </p>
+ * 
+ * <p>
+ * This class is based on {@link https
+ * ://github.com/steveliles/jetty-embedded-spring-mvc}.
+ * </p>
+ * 
  */
 public class WebServer {
 	private static final String PROJECT_RELATIVE_PATH_TO_WEBAPP = "src/main/webapp";
-
-	public static interface WebContext {
-		public File getWarPath();
-
-		public String getContextPath();
-	}
 
 	private Server server;
 

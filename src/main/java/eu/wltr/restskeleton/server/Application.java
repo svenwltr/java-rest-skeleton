@@ -1,5 +1,8 @@
 package eu.wltr.restskeleton.server;
 
+/**
+ * This is the main class of this application.
+ */
 public class Application {
 
 	private WebServer server;
@@ -13,6 +16,7 @@ public class Application {
 	public Application() {
 		server = new WebServer(PORT);
 	}
+
 	public void join() {
 		try {
 			server.start();
