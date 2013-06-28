@@ -1,5 +1,7 @@
 package eu.wltr.restskeleton.beans.webserver;
 
+import javax.servlet.ServletContext;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -10,6 +12,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 
+/**
+ * Logical instance for Service Selection Function.
+ * 
+ * @author Sven Walter <sven.walter@wltr.eu>
+ */
 @Service
 public class WebServer implements ApplicationContextAware {
 
@@ -28,6 +35,7 @@ public class WebServer implements ApplicationContextAware {
 
 	private ApplicationContext applicationContext;
 
+	@Override
 	public void setApplicationContext(ApplicationContext parentContext)
 			throws BeansException {
 		this.applicationContext = parentContext;
@@ -44,8 +52,10 @@ public class WebServer implements ApplicationContextAware {
 		org.eclipse.jetty.util.log.Log.setLog(null);
 
 		ServletContextHandler context = new ServletContextHandler();
+		context.setResourceBase("./src/main/webapp/");
 		context.setContextPath("/");
-		context.addServlet(createServletHolder(), "/*");
+		context.addServlet(createServletHolder(context.getServletContext()),
+				"/*");
 
 		server = new Server(this.port);
 
@@ -61,10 +71,11 @@ public class WebServer implements ApplicationContextAware {
 
 	}
 
-	public ServletHolder createServletHolder() {
-		final AnnotationConfigWebApplicationContext webApplicationContext = new AnnotationConfigWebApplicationContext();
+	public ServletHolder createServletHolder(ServletContext context) {
+		AnnotationConfigWebApplicationContext webApplicationContext = new AnnotationConfigWebApplicationContext();
 		webApplicationContext.register(WebConfig.class);
 		webApplicationContext.scan(scanPackage);
+		webApplicationContext.setServletContext(context);
 
 		webApplicationContext.setParent(applicationContext);
 
@@ -74,4 +85,5 @@ public class WebServer implements ApplicationContextAware {
 		return servletHolder;
 
 	}
+
 }

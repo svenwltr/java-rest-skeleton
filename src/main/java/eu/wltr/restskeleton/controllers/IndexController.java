@@ -12,6 +12,5 @@ public class IndexController {
 	public String index(ModelMap model) {
 		model.addAttribute("message", "Spring 3 MVC Hello World");
 		return "index";
-
 	}
 }

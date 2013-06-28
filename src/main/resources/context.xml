@@ -23,6 +23,8 @@
 	<context:component-scan base-package="eu.wltr.restskeleton.models" />
 	
 	<!-- WebServer -->
-	<bean class="eu.wltr.restskeleton.beans.webserver.WebServerBean" init-method="start">
+	<bean class="eu.wltr.restskeleton.beans.webserver.WebServer" init-method="start">
+	<property name="port" value="7778" />
+	<property name="scanPackage" value="eu.wltr.restskeleton.controllers" />
 	</bean>
 </beans>
