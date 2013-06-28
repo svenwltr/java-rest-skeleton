@@ -21,4 +21,8 @@
 
 	<!-- Scans for Documents and Repositories, so they are avalible with @Autowire. -->
 	<context:component-scan base-package="eu.wltr.restskeleton.models" />
+	
+	<!-- WebServer -->
+	<bean class="eu.wltr.restskeleton.beans.webserver.WebServerBean" init-method="start">
+	</bean>
 </beans>
