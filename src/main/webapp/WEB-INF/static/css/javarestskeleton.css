@@ -1,0 +1,18 @@
+body {
+	background: #f8f8f8;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 15px;
+}
+
+h1, p {
+  color: #333;
+}
+
+div {
+  width: 100%;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 5px 10px;
+}
