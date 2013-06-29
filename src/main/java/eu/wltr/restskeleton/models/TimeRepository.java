@@ -9,21 +9,24 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BarRepository {
+public class TimeRepository {
 
 	@Autowired
 	public MongoOperations mongoOperations;
 
-	public List<BarDocument> findAll() {
-		return mongoOperations.findAll(BarDocument.class);
+	public List<TimeDocument> findAll() {
+		return mongoOperations.findAll(TimeDocument.class);
+
 	}
 
-	public BarDocument findByName(String name) {
+	public TimeDocument findByName(String name) {
 		Query q = new Query(Criteria.where("name").is(name));
-		return mongoOperations.findOne(q, BarDocument.class);
+		return mongoOperations.findOne(q, TimeDocument.class);
+
 	}
 
-	public void save(BarDocument m) {
+	public void save(TimeDocument m) {
 		mongoOperations.save(m);
+
 	}
 }

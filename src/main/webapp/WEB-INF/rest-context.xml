@@ -27,6 +27,6 @@
 	</mvc:annotation-driven>
 
 	<!-- The bean for serializer. -->
-	<bean id="jacksonObjectMapper" class="eu.wltr.restskeleton.mapper.RestObjectMapper" />
+	<bean id="jacksonObjectMapper" class="eu.wltr.restskeleton.fields.mapper.RestObjectMapper" />
 
 </beans>

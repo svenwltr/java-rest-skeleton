@@ -1,5 +1,4 @@
-package eu.wltr.restskeleton.mapper;
-
+package eu.wltr.restskeleton.fields;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -11,28 +10,24 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.SerializerProvider;
 import org.codehaus.jackson.map.ser.SerializerBase;
 
+public class DurationSerializer extends SerializerBase<Duration> {
+	public DurationSerializer() {
+		super(Duration.class);
 
-
-public class FooFieldSerializer extends SerializerBase<FooField>
-{
-
-	public FooFieldSerializer() {
-		super(FooField.class);
 	}
 
 	@Override
-	public void serialize(FooField value, JsonGenerator jgen,
+	public void serialize(Duration value, JsonGenerator jgen,
 			SerializerProvider provider) throws IOException,
-			JsonGenerationException
-	{
-		jgen.writeString(String.format("%s:%d:%s", value.a, value.b, value.c));
+			JsonGenerationException {
+		jgen.writeString(String.format("s%s", value.seconds));
+
 	}
 
 	@Override
 	public JsonNode getSchema(SerializerProvider provider, Type typeHint)
-			throws JsonMappingException
-	{
+			throws JsonMappingException {
 		throw new UnsupportedOperationException();
-	}
 
+	}
 }
