@@ -11,6 +11,7 @@
 
 	<!-- Scans for all Controllers. -->
 	<context:component-scan base-package="eu.wltr.restskeleton.controllers" />
+	<context:component-scan base-package="eu.wltr.restskeleton.converters.jackson" />
 
 	<!-- Register own mapper. -->
 	<mvc:annotation-driven>
@@ -21,12 +22,12 @@
 				class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
 			<bean
 				class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
-				<!-- <property name="objectMapper" ref="jacksonObjectMapper" /> -->
+				<property name="objectMapper" ref="jacksonObjectMapper" />
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
 
-	<!-- The bean for serializer. <bean id="jacksonObjectMapper" class="eu.wltr.restskeleton.fields.mapper.RestObjectMapper" 
-		/> -->
+	<!-- The bean for serializer. -->
+	<bean id="jacksonObjectMapper" class="eu.wltr.restskeleton.converters.JacksonObjectMapper" />
 
 </beans>

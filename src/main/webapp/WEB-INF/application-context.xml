@@ -14,14 +14,7 @@
 	<mongo:db-factory dbname="skeleton" />
 
 	<mongo:mapping-converter>
-		<mongo:custom-converters>
-			<mongo:converter>
-				<bean class="eu.wltr.restskeleton.fields.DurationWriteConverter" />
-			</mongo:converter>
-			<mongo:converter>
-				<bean class="eu.wltr.restskeleton.fields.DurationReadConverter" />
-			</mongo:converter>
-		</mongo:custom-converters>
+		<mongo:custom-converters base-package="eu.wltr.restskeleton.converters.mongodb" />
 	</mongo:mapping-converter>
 
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
@@ -30,6 +23,6 @@
 	</bean>
 
 	<!-- Scans for Documents and Repositories, so they are avalible with @Autowire. -->
-	<context:component-scan base-package="eu.wltr.restskeleton.models" />
+	<context:component-scan base-package="eu.wltr.restskeleton.models" /> 
 
 </beans>
