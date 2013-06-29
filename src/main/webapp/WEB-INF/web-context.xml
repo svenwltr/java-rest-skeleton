@@ -9,14 +9,13 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
 
-	<!-- This application context handles the MVC part. Beans, that are not 
-		necessary to be here, should not be here. -->
+	<!-- Defines a mapping for static files. -->
+	<mvc:resources mapping="/css/**" location="/WEB-INF/static/css/" />
+	<mvc:resources mapping="/js/**" location="/WEB-INF/static/js/" />
+	<mvc:resources mapping="/html/**" location="/WEB-INF/static/html/" />
 
-	<!-- Scans for all Controllers. -->
-	<context:component-scan base-package="eu.wltr.restskeleton.controllers" />
-
-	<!-- Defines a mapping for static files. (http://example.com/static/...) -->
-	<mvc:resources mapping="/static/**" location="/WEB-INF/static/" />
+	<!-- Defines a mapping for single JSP files without controller. -->
+	<mvc:view-controller path="/" view-name="index" />
 
 	<!-- Defines a resolver for JSP files. -->
 	<bean id="viewResolver"
@@ -26,22 +25,5 @@
 		<property name="prefix" value="/WEB-INF/pages/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-
-	<!-- See docs. -->
-	<mvc:annotation-driven>
-		<!-- Defines special serializers for JSON throug HTTP. -->
-		<mvc:message-converters>
-			<bean class="org.springframework.http.converter.StringHttpMessageConverter" />
-			<bean
-				class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
-			<bean
-				class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
-				<property name="objectMapper" ref="jacksonObjectMapper" />
-			</bean>
-		</mvc:message-converters>
-	</mvc:annotation-driven>
-
-	<!-- The bean for serializer. -->
-	<bean id="jacksonObjectMapper" class="eu.wltr.restskeleton.mapper.RestObjectMapper" />
 
 </beans>

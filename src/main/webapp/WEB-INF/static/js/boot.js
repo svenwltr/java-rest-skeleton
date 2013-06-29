@@ -1,7 +1,7 @@
 
 requirejs
 		.config({
-			"baseUrl" : "static/js",
+			"baseUrl" : "js",
 			"paths" : {
 				"html" : "../html",
 
