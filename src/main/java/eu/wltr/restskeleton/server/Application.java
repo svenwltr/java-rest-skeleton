@@ -11,17 +11,22 @@ public class Application {
 
 	public static void main(String[] args) {
 		new Application().join();
+
 	}
 
 	public Application() {
 		server = new WebServer(PORT);
+
 	}
 
 	public void join() {
 		try {
 			server.start();
+
 		} catch (Exception e) {
 			e.printStackTrace();
+
 		}
+
 	}
 }

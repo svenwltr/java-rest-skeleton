@@ -26,7 +26,7 @@ import org.eclipse.jetty.webapp.WebAppContext;
  * 
  */
 public class WebServer {
-	private static final String PROJECT_RELATIVE_PATH_TO_WEBAPP = "src/main/webapp";
+	private static final String WEBAPP_PATH = "src/main/webapp";
 
 	private Server server;
 
@@ -34,13 +34,15 @@ public class WebServer {
 
 	private String bindInterface;
 
-	public WebServer(int aPort) {
-		this(aPort, null);
+	public WebServer(int port) {
+		this(port, null);
+
 	}
 
-	public WebServer(int aPort, String aBindInterface) {
-		port = aPort;
-		bindInterface = aBindInterface;
+	public WebServer(int port, String bindInterface) {
+		this.port = port;
+		this.bindInterface = bindInterface;
+
 	}
 
 	public void start() throws Exception {
@@ -52,47 +54,51 @@ public class WebServer {
 		server.setStopAtShutdown(true);
 
 		server.start();
+
 	}
 
 	public void join() throws InterruptedException {
 		server.join();
+
 	}
 
 	public void stop() throws Exception {
 		server.stop();
+
 	}
 
 	private ThreadPool createThreadPool() {
-		// TODO: You should configure these appropriately
-		// for your environment - this is an example only
-		QueuedThreadPool _threadPool = new QueuedThreadPool();
-		_threadPool.setMinThreads(10);
-		_threadPool.setMaxThreads(100);
-		return _threadPool;
+		QueuedThreadPool threadPool = new QueuedThreadPool();
+		threadPool.setMinThreads(10);
+		threadPool.setMaxThreads(100);
+		return threadPool;
+
 	}
 
 	private SelectChannelConnector createConnector() {
-		SelectChannelConnector _connector = new SelectChannelConnector();
-		_connector.setPort(port);
-		_connector.setHost(bindInterface);
-		return _connector;
+		SelectChannelConnector connector = new SelectChannelConnector();
+		connector.setPort(port);
+		connector.setHost(bindInterface);
+		return connector;
+
 	}
 
 	private HandlerCollection createHandlers() {
-		WebAppContext _ctx = new WebAppContext();
-		_ctx.setContextPath("/");
-		_ctx.setWar(PROJECT_RELATIVE_PATH_TO_WEBAPP);
+		WebAppContext context = new WebAppContext();
+		context.setContextPath("/");
+		context.setWar(WEBAPP_PATH);
 
-		List<Handler> _handlers = new ArrayList<Handler>();
+		List<Handler> handlers = new ArrayList<Handler>();
 
-		_handlers.add(_ctx);
+		handlers.add(context);
 
-		HandlerList _contexts = new HandlerList();
-		_contexts.setHandlers(_handlers.toArray(new Handler[0]));
+		HandlerList handlerList = new HandlerList();
+		handlerList.setHandlers(handlers.toArray(new Handler[0]));
 
-		HandlerCollection _result = new HandlerCollection();
-		_result.setHandlers(new Handler[]{_contexts});
+		HandlerCollection handlerCollection = new HandlerCollection();
+		handlerCollection.setHandlers(new Handler[]{handlerList});
 
-		return _result;
+		return handlerCollection;
+
 	}
 }
