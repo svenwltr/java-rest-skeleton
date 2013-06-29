@@ -11,14 +11,25 @@
 	<!-- This application context contains all extra beans. -->
 
 	<!-- Configuration for MongoDB. -->
-	<mongo:mongo host="127.0.0.1" port="27017" />
 	<mongo:db-factory dbname="skeleton" />
 
-	<!-- This bean is for direct communication with MongoDB. This will be used by Repositories. -->
-	<bean id="mongoOperations" class="org.springframework.data.mongodb.core.MongoTemplate">
+	<mongo:mapping-converter>
+		<mongo:custom-converters>
+			<mongo:converter>
+				<bean class="eu.wltr.restskeleton.fields.DurationWriteConverter" />
+			</mongo:converter>
+			<mongo:converter>
+				<bean class="eu.wltr.restskeleton.fields.DurationReadConverter" />
+			</mongo:converter>
+		</mongo:custom-converters>
+	</mongo:mapping-converter>
+
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+		<constructor-arg name="mongoConverter" ref="mappingConverter" />
 	</bean>
 
 	<!-- Scans for Documents and Repositories, so they are avalible with @Autowire. -->
 	<context:component-scan base-package="eu.wltr.restskeleton.models" />
+
 </beans>
