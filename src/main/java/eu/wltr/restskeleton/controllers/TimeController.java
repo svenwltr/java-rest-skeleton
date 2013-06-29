@@ -1,6 +1,5 @@
 package eu.wltr.restskeleton.controllers;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import eu.wltr.restskeleton.fields.Duration;
 import eu.wltr.restskeleton.models.TimeDocument;
 import eu.wltr.restskeleton.models.TimeRepository;
 
@@ -30,9 +28,6 @@ public class TimeController {
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody
 	TimeDocument postModel(@RequestBody TimeDocument doc) {
-		doc.date = new Date();
-		doc.duration = new Duration(5000000L);
-
 		timeRepository.save(doc);
 		return doc;
 
