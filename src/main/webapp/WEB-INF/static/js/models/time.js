@@ -84,13 +84,21 @@ define([ "jquery", "backbone", "text!html/time.tpl.html", "utils/templating" ],
 					},
 
 					render : function() {
-						Templating.render(this.$el, this.model.toJSON());
+						Templating.render(this.$el, this.values);
 
 					},
 
-					edit : function(model) {
-						this.values = model.toJSON();
-						this.model = model;
+					setModel : function(model) {
+						if (model) {
+							this.model = model;
+							this.values = model.toJSON();
+							
+						} else {
+							this.model = null;
+							this.values = new Time().defaults();
+							
+						}
+						
 						this.render();
 
 					},
@@ -98,14 +106,21 @@ define([ "jquery", "backbone", "text!html/time.tpl.html", "utils/templating" ],
 					change : function(event) {
 						var name = $(event.target).attr("name");
 						var value = $(event.target).val();
-						
+
 						this.values[name] = value;
 					},
-					
+
 					submit : function(event) {
+						if (!this.model) {
+							this.model = timeList.create();
+
+						}
+
 						this.model.set(this.values);
 						this.model.save();
 						
+						this.setModel();
+
 					}
 
 				});
@@ -141,9 +156,14 @@ define([ "jquery", "backbone", "text!html/time.tpl.html", "utils/templating" ],
 							model : time
 						});
 
-						this.form.listenTo(view, 'edit', this.form.edit);
+						this.form.listenTo(view, 'edit', this.form.setModel);
 						view.render();
 						Templating.append(this.$el, "items", view.$el);
+						
+						this.listenTo(time, "remove", function(event){
+							view.$el.remove();
+							view.remove();
+						});
 
 					}
 
