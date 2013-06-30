@@ -10,9 +10,36 @@ h1, p {
   color: #333;
 }
 
-div {
-  width: 100%;
+form, table {
   border: 1px solid #ccc;
   background-color: #fff;
   padding: 5px 10px;
+}
+
+td, th {
+	padding: 2px 6px;
+	
+}
+
+label {
+	width: 100px;
+	display: inline-block;
+}
+
+input {
+	border: 1px solid #ccc;
+}
+
+button {
+	border: 1px solid #ccc;
+	background-color: #ccc;
+}
+
+.unicode-icon {
+	font-size: 14pt;
+	line-height: 0.5;
+}
+
+a.unicode-icon {
+	cursor: pointer;
 }

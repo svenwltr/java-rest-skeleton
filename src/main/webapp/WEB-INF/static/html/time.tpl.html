@@ -1,34 +1,45 @@
-<table data-bind="timetable-list">
-	<thead>
-		<tr>
-			<th data-bind="foo">ID</th>
-			<th>Name</th>
-			<th>Date</th>
-			<th>Duration</th>
-		</tr>
-	</thead>
-	<tbody data-bind="items">
-		<tr data-bind="item">
-			<td data-bind="id"></td>
-			<td data-bind="name"></td>
-			<td data-bind="date"></td>
-			<td data-bind="duration"></td>
-		</tr>
-	</tbody>
-</table>
+<div data-bind="timetable">
+	<h2>List</h2>
+	<table data-bind="timetable-list">
+		<thead>
+			<tr>
+				<th></th>
+				<th data-bind="foo">ID</th>
+				<th>Name</th>
+				<th>Date</th>
+				<th>Duration</th>
+			</tr>
+		</thead>
+		<tbody data-bind="items">
+			<tr data-bind="item">
+				<td><a class="unicode-icon" data-action="edit">⚙</a><a data-action="remove" class="unicode-icon">✘</a></td>
+				<td data-bind="id"></td>
+				<td data-bind="name"></td>
+				<td data-bind="date"></td>
+				<td data-bind="duration"></td>
+			</tr>
+		</tbody>
+	</table>
 
-<div data-bind="timetable-form">
-	<p>
-		<label>ID</label> <input data-bind="id" name="timetable-id">
-	</p>
-	<p>
-		<label>Name</label> <input data-bind="name" name="timetable-name">
-	</p>
-	<p>
-		<label>Date</label> <input data-bind="date" name="timetable-date">
-	</p>
-	<p>
-		<label>Duration</label> <input data-bind="duration"
-			name="timetable-duration">
-	</p>
+	<h2>Form</h2>
+	<div data-bind="timetable-form">
+		<p>
+			<label>ID</label> <span data-bind="id"></span>
+		</p>
+		<p>
+			<label>Name</label> <input data-bind="name" name="timetable-name">
+		</p>
+		<p>
+			<label>Date</label> <input data-bind="date" name="timetable-date">
+		</p>
+		<p>
+			<label>Duration</label> <input data-bind="duration"
+				name="timetable-duration">
+		</p>
+		<p>
+			<label></label>
+			<button data-action="save">Speichern</button>
+		</p>
+	</div>
+
 </div>
