@@ -19,6 +19,12 @@ public class TimeRepository {
 
 	}
 
+	public TimeDocument findById(String id) {
+		Query q = new Query(Criteria.where("id").is(id));
+		return mongoOperations.findOne(q, TimeDocument.class);
+
+	}
+
 	public TimeDocument findByName(String name) {
 		Query q = new Query(Criteria.where("name").is(name));
 		return mongoOperations.findOne(q, TimeDocument.class);
@@ -27,6 +33,11 @@ public class TimeRepository {
 
 	public void save(TimeDocument m) {
 		mongoOperations.save(m);
+
+	}
+
+	public void remove(TimeDocument m) {
+		mongoOperations.remove(m);
 
 	}
 }

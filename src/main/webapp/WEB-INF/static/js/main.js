@@ -3,7 +3,7 @@ define(["jquery", "text!html/base.html", "models/time"], function($, baseHtml, t
     $(function() {
         $("body").html(baseHtml);
         
-        time.init();
+        time();
         
     });
 });

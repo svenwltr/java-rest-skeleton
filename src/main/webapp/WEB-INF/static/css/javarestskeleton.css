@@ -28,11 +28,13 @@ label {
 
 input {
 	border: 1px solid #ccc;
+	padding: 5px 10px;
 }
 
 button {
 	border: 1px solid #ccc;
-	background-color: #ccc;
+	background-color: #fff;
+	padding: 5px 10px;
 }
 
 .unicode-icon {

@@ -12,7 +12,8 @@
 		</thead>
 		<tbody data-bind="items">
 			<tr data-bind="item">
-				<td><a class="unicode-icon" data-action="edit">⚙</a><a data-action="remove" class="unicode-icon">✘</a></td>
+				<td><a class="unicode-icon" data-action="edit">⚙</a><a
+					data-action="remove" class="unicode-icon">✘</a></td>
 				<td data-bind="id"></td>
 				<td data-bind="name"></td>
 				<td data-bind="date"></td>
@@ -27,18 +28,17 @@
 			<label>ID</label> <span data-bind="id"></span>
 		</p>
 		<p>
-			<label>Name</label> <input data-bind="name" name="timetable-name">
+			<label>Name</label> <input data-bind="name" name="name">
 		</p>
 		<p>
-			<label>Date</label> <input data-bind="date" name="timetable-date">
+			<label>Date</label> <input data-bind="date" name="date">
 		</p>
 		<p>
-			<label>Duration</label> <input data-bind="duration"
-				name="timetable-duration">
+			<label>Duration</label> <input data-bind="duration" name="duration">
 		</p>
 		<p>
 			<label></label>
-			<button data-action="save">Speichern</button>
+			<button data-action="submit">Speichern</button>
 		</p>
 	</div>
 
