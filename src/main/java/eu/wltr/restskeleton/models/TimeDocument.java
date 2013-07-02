@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import eu.wltr.restskeleton.fields.Duration;
 
-@Document(collection = "time")
+@Document
 public class TimeDocument {
 
 	@Id

@@ -1,9 +1,11 @@
 package eu.wltr.restskeleton.controllers;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,27 +30,36 @@ public class TimeController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody
-	TimeDocument postModel(@RequestBody TimeDocument doc) {
-		timeRepository.save(doc);
-		return doc;
+	TimeDocument postModel(@RequestBody TimeDocument entity,
+			BindingResult result) {
+		timeRepository.save(entity);
+		return entity;
 
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public @ResponseBody
 	TimeDocument delete(@PathVariable("id") String id) {
-		TimeDocument m = timeRepository.findById(id);
-		timeRepository.remove(m);
-		return m;
+		TimeDocument entity = timeRepository.findOne(id);
+		timeRepository.delete(entity);
+		return entity;
 
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public @ResponseBody
 	TimeDocument update(@PathVariable("id") String id,
-			@RequestBody TimeDocument doc) {
-		timeRepository.save(doc);
-		return doc;
+			@RequestBody TimeDocument entity) {
+		timeRepository.save(entity);
+		return entity;
+
+	}
+
+	@RequestMapping("/error")
+	public @ResponseBody
+	TimeDocument error() throws IOException {
+
+		throw new IOException("foo");
 
 	}
 
