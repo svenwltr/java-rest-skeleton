@@ -1,6 +1,5 @@
 package eu.wltr.restskeleton.fields;
 
-
 public class Duration {
 
 	public final long seconds;

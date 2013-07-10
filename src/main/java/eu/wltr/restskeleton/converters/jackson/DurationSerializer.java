@@ -2,20 +2,20 @@ package eu.wltr.restskeleton.converters.jackson;
 
 import java.io.IOException;
 
-import org.codehaus.jackson.JsonGenerationException;
-import org.codehaus.jackson.JsonGenerator;
-import org.codehaus.jackson.map.JsonSerializer;
-import org.codehaus.jackson.map.SerializerProvider;
-import org.codehaus.jackson.map.module.SimpleModule;
 import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.core.JsonGenerator;
+import com.fasterxml.jackson.databind.JsonSerializer;
+import com.fasterxml.jackson.databind.SerializerProvider;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import eu.wltr.restskeleton.converters.JacksonConverter;
 import eu.wltr.restskeleton.fields.Duration;
 
 @Service
-public class DurationSerializer extends JsonSerializer<Duration>
-		implements
-			JacksonConverter {
+public class DurationSerializer extends JsonSerializer<Duration> implements
+		JacksonConverter {
 
 	@Override
 	public void register(SimpleModule module) {

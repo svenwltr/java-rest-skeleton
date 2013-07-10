@@ -4,20 +4,20 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.codehaus.jackson.JsonParser;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.map.DeserializationContext;
-import org.codehaus.jackson.map.JsonDeserializer;
-import org.codehaus.jackson.map.module.SimpleModule;
 import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 import eu.wltr.restskeleton.converters.JacksonConverter;
 import eu.wltr.restskeleton.fields.Duration;
 
 @Service
-public class DurationDeserializer extends JsonDeserializer<Duration>
-		implements
-			JacksonConverter {
+public class DurationDeserializer extends JsonDeserializer<Duration> implements
+		JacksonConverter {
 
 	public final static Pattern pattern = Pattern
 			.compile("^P((\\d+)Y)?((\\d+)M)?((\\d+)D)?(T((\\d+)H)?((\\d+)M)?((\\d+)S)?)?$");
@@ -75,7 +75,14 @@ public class DurationDeserializer extends JsonDeserializer<Duration>
 			return new Duration(result);
 
 		} else {
-			return new Duration(Long.parseLong(text));
+			try {
+				return new Duration(Long.parseLong(text));
+
+			} catch (NumberFormatException e) {
+				// ???
+				return null;
+
+			}
 
 		}
 

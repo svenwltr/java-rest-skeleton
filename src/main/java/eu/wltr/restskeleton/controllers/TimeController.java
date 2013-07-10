@@ -2,6 +2,9 @@ package eu.wltr.restskeleton.controllers;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,8 +33,17 @@ public class TimeController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public @ResponseBody
-	TimeDocument postModel(@RequestBody TimeDocument entity,
+	TimeDocument create(@RequestBody @Valid TimeDocument entity,
 			BindingResult result) {
+		timeRepository.save(entity);
+		return entity;
+
+	}
+
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public @ResponseBody
+	TimeDocument update(@PathVariable("id") String id,
+			@RequestBody @Valid TimeDocument entity, BindingResult result) {
 		timeRepository.save(entity);
 		return entity;
 
@@ -46,20 +58,17 @@ public class TimeController {
 
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public @ResponseBody
-	TimeDocument update(@PathVariable("id") String id,
-			@RequestBody TimeDocument entity) {
-		timeRepository.save(entity);
-		return entity;
-
-	}
-
 	@RequestMapping("/error")
 	public @ResponseBody
 	TimeDocument error() throws IOException {
 
 		throw new IOException("foo");
+
+	}
+
+	@RequestMapping(value = "/test", method = RequestMethod.POST)
+	public void test(@RequestBody Map<Object, Object> entity)
+			throws IOException {
 
 	}
 

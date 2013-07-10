@@ -85,9 +85,9 @@
 
 		<!-- Jackson JSON Mapper -->
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.7.1</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.2.2</version>
 		</dependency>
 
 		<!-- mongodb java driver -->
@@ -95,6 +95,13 @@
 			<groupId>org.mongodb</groupId>
 			<artifactId>mongo-java-driver</artifactId>
 			<version>2.11.0</version>
+		</dependency>
+
+		<!-- Validation -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.0.1.Final</version>
 		</dependency>
 
 		<!-- Spring data mongodb -->
@@ -105,17 +112,23 @@
 		</dependency>
 
 		<!-- Logging utility -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>slf4j-impl</artifactId>
 			<version>2.0-alpha2</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- for base64 conversion -->
 		<dependency>
 			<groupId>commons-codec</groupId>
 			<artifactId>commons-codec</artifactId>
 			<version>20041127.091804</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.5</version>
 		</dependency>
 	</dependencies>
 </project>

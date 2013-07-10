@@ -1,6 +1,6 @@
 package eu.wltr.restskeleton.converters;
 
-import org.codehaus.jackson.map.module.SimpleModule;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public interface JacksonConverter {
 	public void register(SimpleModule module);

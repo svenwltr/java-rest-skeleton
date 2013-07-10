@@ -24,6 +24,7 @@
 
 	<!-- Scans for Documents and Repositories, so they are avalible with @Autowire. -->
 	<context:component-scan base-package="eu.wltr.restskeleton.models" />
+	<context:component-scan base-package="eu.wltr.restskeleton.services" />
 
 	<bean class="eu.wltr.restskeleton.exceptions.RestHandlerExceptionResolver"></bean>
 </beans>
